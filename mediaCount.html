@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+		<title>mediaCount: LibraryCloud demo</title>
+		
+		<link href="mediaCount.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="mediaCount.js"></script>	
+		<script type="text/javascript" src="includes/jquery-1.11.0.min.js"></script>
+
+	 	<script language="javascript" type="text/javascript" src="./includes/jqplot/jquery.jqplot.min.js"></script>
+	 	<link rel="stylesheet" type="text/css" href="./includes/jqplot/jquery.jqplot.min.css" />
+		<script type="text/javascript" src="./includes/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+		<script type="text/javascript" src="./includes/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+		<script type="text/javascript" src="./includes/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+		<script type="text/javascript" src="./includes/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
+
+		<script type="text/javascript" src="includes/jquery-librarycloud-dw.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+		<link rel="icon" type="image/ico" href="./favicon.ico">
+		<script language="javascript" type="text/javascript">
+			$(document).ready(function(){	
+				init();
+			});
+		</script>
+	</head>
+<body>
+	<div id="pagetitlediv">
+		<span id="pagetitle">MediaCount</span>
+		<span id=pagesubtitle">(demo)</span>
+		<span id="instructionsbutton" class="on" onclick="toggleButtons('explanation')">Help</span>
+		<span id="aboutbutton" class="off" onclick="toggleButtons('about')">About</span>
+	</div>
+	<!-- dropdown help -->
+	<div id="explanation">
+		<div class="explans">mediaCount shows you the breakdown of items by media type within any set of subjects you search the Harvard Library collection for.</div>
+		<div class="explans">
+			Enter a keyword for a subject in the search box. Press the big blue plus sign to add another term. Click the X next to a search box to delete it.</div>
+		<div class="explans">
+			This demo app is using the live Harvard LibraryCloud API to get its data. Have fun!</div>
+			<div class= "hideexplansbtn" onclick="toggleButtons('explanation')">Hide
+		</div>
+	</div>
+	<!-- dropdown about -->
+	<div id="about" style="display:none">
+		<div class="explans">
+			mediaCount is a demo written by a hobbyist to try out and show off some of the capabilities of <a href="http://librarycloud.harvard.edu">Harvard LibraryCloud</a>.
+		</div>
+		<div class="explans">
+			LibraryCloud makes openly available Harvard's information about the almost thirteen million
+			items in its combined collections (73 libraries plus a large off-campus repository), and more.
+			Any developer can use this rich set of information to create applications like mediaCount (except
+			better) without asking permission or making special arrangements. LibraryCloud is at this point (Sept. 2014) 
+			a pilot that we hope will become a maintained part of Harvard Library's infrastructure.
+		</div>
+		<div class="explans">
+			mediaCount is an Open Source project (as is LibraryCloud).   The laughable source code is on <a href="https://github.com/dweinberger/mediacount/">Github</a>. If you hit bugs (you will) or have suggestions, send an email
+			to me at david@weinberger.org. Thanks! -- David Weinberger, Nov. 1, 2014
+			
+		</div>
+		<div class= "hideexplansbtn" onclick="toggleButtons('about')">
+		Hide
+		</div>
+	</div>
+	
+		<div class="clear"><p>&nbsp;</p></div>
+	<div id="searchboxcontainer">
+		<div id="searchtitle">
+			Subjects
+		</div>
+		<div id="searchboxes">
+			<div id="sbdiv0">
+				<textarea id="sb0" class="searchbox"></textarea>
+			</div>
+		</div>
+		<div><span class="addbox" title="Add another search box" onclick="addBox()"><img src="./images/plus.png"></span>
+		<input type="button" onclick="startSearch()" value="Search" id="searchbtn">
+		</div>
+		<span id="statusbox"></span>
+	</div>
+	
+	
+<div id="maincontainer">
+
+	<!-- BAR CHARTS (these work but are currently hidden) -->
+	<div id="graphdiv">
+		<div id="chartdiv1"  style="display:none;height:300px;width:700px; "></div>
+		<div style="clear:both">
+			<div id="chartdiv2"  style="display:none;height:300px;width:700px; ">
+			</div>
+		</div>
+	</div>
+	
+	<!--- PIE CHARTS -->
+	<div id="piecontainer">
+	</div>
+
+<!-- "Please wait" gif -->
+<div id="loading" style="display:none"></div> 
+</body>
+</html>
